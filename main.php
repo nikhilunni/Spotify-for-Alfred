@@ -83,7 +83,7 @@ if(mb_strlen($rawQuery) < 3) {
 	/* Output the details. */
 	$results[0][title]        = $json->$type->name;
 	$results[0][subtitle]     = "View $type in Spotify";
-	$results[0][arg]          = 'activate (open location "' . $detailURL . '")';
+	$results[0][arg]          = 'activate (play track "' . $detailURL . '")';
 	
 	if($showImages) {
 		$results[0][icon]     = getTrackArtwork($detailURL);
@@ -125,7 +125,7 @@ if(mb_strlen($rawQuery) < 3) {
 			
 			$currentResult[title] = "$currentResultNumber. $value->name";
 			$currentResult[subtitle] = "$starString " . beautifyTime($value->length);
-			$currentResult[arg] = 'open location "' . $value->href . '"';
+			$currentResult[arg] = 'play track "' . $value->href . '"';
 			$currentResult[icon] = "include/images/track.png";
 			
 			$results[] = $currentResult;
@@ -185,7 +185,7 @@ if(mb_strlen($rawQuery) < 3) {
 			// only used if item is not valid. Tracks run an action, everything
 			// else autocompletes.
 			$currentResult[valid]        = ($type == 'track') ? 'yes' : 'no';
-			$currentResult[arg]          = "open location \"$value->href\"";
+			$currentResult[arg]          = "play track \"$value->href\"";
 			$currentResult[autocomplete] = "$value->href ► $query ►";
 			
 			if($showImages && $currentResultNumber <= $imgdResults / 3) {
